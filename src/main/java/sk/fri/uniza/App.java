@@ -82,7 +82,7 @@ public class App {
         // meteo stanice s ID: station_1
         Call<List<WeatherData>> historyWeatherPojo =
                 iotNode.getWeatherStationService()
-                        .getHistoryWeather("station_1","20/01/2021 15:00","21/01/2021 15:00");
+                        .getHistoryWeather("station_1","15/04/2021 15:00","21/04/2021 15:00");
 
 
 
@@ -96,6 +96,12 @@ public class App {
                 System.out.println(body);
             }
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            System.out.println(iotNode.getAverageTemperature("station_1","15/04/2021 15:00","21/04/2021 15:00"));
         } catch (IOException e) {
             e.printStackTrace();
         }
