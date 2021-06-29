@@ -77,5 +77,27 @@ public class App {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Vytvorenie požiadavky na získanie údajov o predoslom počasí z
+        // meteo stanice s ID: station_1
+        Call<List<WeatherData>> historyWeatherPojo =
+                iotNode.getWeatherStationService()
+                        .getHistoryWeather("station_1","20/01/2021 15:00","21/01/2021 15:00");
+
+
+
+        try {
+            // Odoslanie požiadavky na server pomocou REST rozhranie
+            Response<List<WeatherData>> response = historyWeatherPojo.execute();
+
+            if (response.isSuccessful()) { // Dotaz na server bol neúspešný
+                //Získanie údajov vo forme inštancie triedy WeatherData
+                List<WeatherData> body = response.body();
+                System.out.println(body);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -34,12 +34,12 @@ public interface WeatherStationService {
                                         @Query("fields") List<String> fields);
 
     @GET("/weather/{station}/history")
-    Call<WeatherData> getHistoryWeather(@Path("station") String station,
+    Call<List<WeatherData>> getHistoryWeather(@Path("station") String station,
                                         @Query("from") String from,
                                         @Query("to") String to);
 
     @GET("/weather/{station}/history")
-    Call<WeatherData> getHistoryWeather(@Path("station") String station,
+    Call<List<WeatherData>> getHistoryWeather(@Path("station") String station,
                                         @Query("from") String from,
                                         @Query("to") String to,
                                         @Query("fields") List<String> fields);
